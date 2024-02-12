@@ -8,6 +8,11 @@ type authenticationInfo struct {
 }
 
 // ?
+// create a method on the autehnticationInfo struct called getBAsicAuth that returns 
+//the formatted string.
+func (authInfo authenticationInfo) getBasicAuth() string {
+	return ("Authorization: Basic " + authInfo.username + authInfo.password)
+}
 
 // don't touch below this line
 

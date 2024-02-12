@@ -3,9 +3,42 @@ package main
 import (
 	"fmt"
 )
+/*
+Implement the `getExpenseReport` function.
+
+* If the `expense` is an `email` then it should return the email's `toAddress` and the `cost` of the email.
+* If the `expense` is an `sms` then it should return the sms's `toPhoneNumber` and its `cost`.
+* If the expense has any other underlying type, just return an empty string and `0.0` for the cost.
+*/
 
 func getExpenseReport(e expense) (string, float64) {
 	// ?
+	/*
+	switch e.(type) {
+	case email:
+		// Type assertion to convert e to email type
+		return e.(email).toAddress, e.cost()
+
+	case sms:
+		return e.(sms).toPhoneNumber, e.cost()
+
+	default:
+		return "", 0.0
+	}
+	*/
+	// alternative approach
+	// e.(email) types is back to its underlying struct
+	em, ok := e.(email)
+	if ok {
+		return em.toAddress, em.cost()
+	}
+
+	s, ok := e.(sms)
+	if ok {
+		return s.toPhoneNumber, s.cost()
+	}
+
+	return "", 0.0
 }
 
 // don't touch below this line

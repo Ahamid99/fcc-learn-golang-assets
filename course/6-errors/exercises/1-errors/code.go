@@ -4,8 +4,32 @@ import (
 	"fmt"
 )
 
+/*
+We offer a product that allows businesses that use Textio to send pairs of messages to couples. It is mostly used by flower shops and movie theaters.
+
+Complete the `sendSMSToCouple` function. It should send 2 messages, first to the customer, then to the customer's spouse.
+
+1. Use `sendSMS()` to send the `msgToCustomer`. If an error is encountered, return `0.0` and the error.
+2. Do the same for the `msgToSpouse`
+3. If both messages are sent successfully, return the total cost of the messages added together.
+
+*When you return a non-nil error in Go, it's conventional to return the "zero" values of all other return values.*
+*/
+
 func sendSMSToCouple(msgToCustomer, msgToSpouse string) (float64, error) {
-	// ?
+	// send message to customer
+	cost, err := sendSMS(msgToCustomer)
+	if err != nil {
+		return 0.0, err
+	}
+
+	// send message to spuse
+	cost2, err2 := sendSMS(msgToSpouse)
+	if err2 != nil {
+		return 0.0, err2
+	}
+
+	return cost + cost2, nil
 }
 
 // don't edit below this line
